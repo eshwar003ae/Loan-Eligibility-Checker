@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loan Eligibility Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #28a745;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .result-box {
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Loan Eligibility Checker</h2>
+
+    {% if Application %}
+      <div class="result-box">{{ Application }}</div>
+    {% endif %}
+
+    <form action="/predict" method="post">
+      <label>Name:</label>
+      <input type="text" name="name"  placeholder="Enter your full name" required>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" title="Select your gender" required>
+      <option value="">--Select--</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      </select>
+
+      <label>Monthly Income (₹):</label>
+      <input type="number" name="monthly_income" placeholder="Enter your monthly income" required>
+
+      <label>Annual Income (₹):</label>
+      <input type="number" name="annual_income" placeholder="Enter your annual income" required>
+
+      <label>Loan Amount (₹):</label>
+      <input type="number" name="loan_amount"  placeholder="Enter loan amount" required>
+
+      <label>Property Worth (₹):</label>
+      <input type="number" name="property_worth"  placeholder="Enter your property worth" required>
+
+      <label>Credit Score:</label>
+      <input type="number" name="credit_score"  placeholder="Enter your credit score" required>
+
+      <button type="submit">Check Loan Eligibility</button>
+    </form>
+  </div>
+
+</body>
+</html>
